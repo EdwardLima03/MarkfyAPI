@@ -1,0 +1,6 @@
+@MarkfyAPI_HostAddress = http://localhost:5234
+
+GET {{MarkfyAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
