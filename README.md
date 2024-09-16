@@ -44,7 +44,7 @@ Principais componentes da arquitetura:
 1. Clone o repositório em sua máquina local:
 
     bash
-    git clone https://github.com/usuario/projeto-api.git
+    git clone https://github.com/EdwardLima03/MarkfyAPI.git
     
 
 2. Abra o projeto no Visual Studio: Vá até o diretório do projeto clonado e abra o arquivo .sln (Solution).
@@ -57,13 +57,13 @@ Principais componentes da arquitetura:
 1. Clone o repositório em sua máquina local:
 
     bash
-    git clone https://github.com/usuario/projeto-api.git
+    git clone https://github.com/EdwardLima03/MarkfyAPI.git
     
 
 2. Navegue até o diretório do projeto:
 
     bash
-    cd projeto-api
+    cd MarkfyAPI
     
 
 3. Restaurar dependências:
