@@ -3,11 +3,13 @@ using Markfy.Models;
 using Markfy.Services;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Markfy.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoService _produtoService;
@@ -19,7 +21,8 @@ namespace Markfy.Controllers
 
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
+        [Authorize]
+        public async Task<ActionResult<IEnumerable<ProdutoIA>>> GetProdutos()
         {
             var produtos = await _produtoService.GetAllProdutosAsync();
             return Ok(produtos);
@@ -27,7 +30,8 @@ namespace Markfy.Controllers
 
         
         [HttpGet("{id}")]
-        public async Task<ActionResult<Produto>> GetProduto(long id)
+        [Authorize]
+        public async Task<ActionResult<ProdutoIA>> GetProduto(long id)
         {
             var produto = await _produtoService.GetProdutoByIdAsync(id);
             if (produto == null)
@@ -39,6 +43,7 @@ namespace Markfy.Controllers
 
         
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
             if (!ModelState.IsValid)
@@ -53,6 +58,7 @@ namespace Markfy.Controllers
 
         
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutProduto(long id, Produto produto)
         {
             if (id != produto.Id)
@@ -79,6 +85,7 @@ namespace Markfy.Controllers
 
         
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteProduto(long id)
         {
             try

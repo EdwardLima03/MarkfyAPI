@@ -41,5 +41,10 @@ namespace Markfy.Services
             
             await _produtoRepository.DeleteProdutoAsync(id);
         }
+
+        Task<ProdutoIA> IProdutoService.GetProdutoByIdAsync(long id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
