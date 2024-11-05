@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Markfy.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class LojaController : ControllerBase
     {
         private readonly ILojaService _lojaService;
@@ -20,7 +20,6 @@ namespace Markfy.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<Loja>>> GetLojas()
         {
             return Ok(await _lojaService.GetAllLojasAsync());
@@ -37,17 +36,15 @@ namespace Markfy.Controllers
             }
             return Ok(loja);
         }
-
+             
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<Loja>> PostLoja(Loja loja)
         {
             await _lojaService.AddLojaAsync(loja);
-            return CreatedAtAction(nameof(GetLoja), new { id = loja.IdLoja }, loja);
+            return CreatedAtAction(nameof(GetLoja), new { id = loja.IdLoja }, loja);    
         }
 
         [HttpPut("{id}")]
-        [Authorize]
         public async Task<IActionResult> PutLoja(long id, Loja loja)
         {
             if (id != loja.IdLoja)
@@ -59,7 +56,6 @@ namespace Markfy.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> DeleteLoja(long id)
         {
             await _lojaService.DeleteLojaAsync(id);

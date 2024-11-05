@@ -30,6 +30,7 @@ namespace Markfy.Controllers
                 Scope = "openid profile",
                 UserName = request.Username,
                 Password = request.Password,
+                Parameters = { { "audience", _configuration["Auth0:Audience"] } }
             });
 
             if (tokenResponse.IsError)

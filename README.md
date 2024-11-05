@@ -17,6 +17,7 @@ Principais componentes da arquitetura:
 2. *View (V)*: No caso de uma API, o “View” é frequentemente substituído pela camada de respostas da API (geralmente no formato JSON). Esta camada é responsável por retornar dados ao cliente que consome a API, como resultado das operações realizadas nas rotas.
 3. *Controller (C)*: O controller atua como intermediário entre as camadas de Model e View. Ele recebe as requisições dos clientes (clientes HTTP, como navegadores ou outras APIs), processa-as de acordo com a lógica de negócios (definida no Model) e retorna a resposta correspondente.
 
+
 ### Fluxo de Requisição na API:
 
 1. Cliente faz uma requisição HTTP (GET, POST, PUT, DELETE) para a API.
@@ -79,6 +80,15 @@ Principais componentes da arquitetura:
     
 
 5. Acessar a API: Após a execução, a API estará disponível em https://localhost:7012/swagger/index.html, onde você poderá testar suas rotas via Swagger.
+
+
+## Autenticação e Autorização
+Após subir a aplicação localmente, você deve seguir os seguintes passos para se autenticar:
+1. Acessar o endpoint  `/api/Auth/login`
+2. Inserir as seguintes credenciais de teste: `{"username": "email.teste2@email.com", "password": "Senha@123"}`
+3. Copiar o valor da chave ``access_token`` que será retornado pelo endpoint
+4. Se estiver usando swagger, colar o valor no campo `Authorize` do contrato (canto superior direito)
+5. Se estiver usando qualquer outro cliente, inserir o header com chave `Authorization` e o valor do token copiado 
 
 
 ## Notas

@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Markfy.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class ProdutoController : ControllerBase
     {
         private readonly IProdutoService _produtoService;
@@ -21,7 +21,6 @@ namespace Markfy.Controllers
 
         
         [HttpGet]
-        [Authorize]
         public async Task<ActionResult<IEnumerable<ProdutoIA>>> GetProdutos()
         {
             var produtos = await _produtoService.GetAllProdutosAsync();
@@ -30,7 +29,6 @@ namespace Markfy.Controllers
 
         
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<ActionResult<ProdutoIA>> GetProduto(long id)
         {
             var produto = await _produtoService.GetProdutoByIdAsync(id);
@@ -43,7 +41,6 @@ namespace Markfy.Controllers
 
         
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
             if (!ModelState.IsValid)
@@ -58,7 +55,6 @@ namespace Markfy.Controllers
 
         
         [HttpPut("{id}")]
-        [Authorize]
         public async Task<IActionResult> PutProduto(long id, Produto produto)
         {
             if (id != produto.Id)
@@ -85,7 +81,6 @@ namespace Markfy.Controllers
 
         
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> DeleteProduto(long id)
         {
             try
